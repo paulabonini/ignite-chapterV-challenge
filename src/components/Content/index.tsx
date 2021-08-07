@@ -4,7 +4,7 @@ import { MovieCard } from "../MovieCard";
 
 import "./styles.scss";
 
-export function Content() {
+export default function Content() {
   const { movies } = useContext(MoviesContext);
   const { selectedGenre } = useContext(MoviesContext);
 

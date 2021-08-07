@@ -1,8 +1,11 @@
+import { lazy, Suspense } from "react";
 import { SideBar } from "./components/SideBar";
-import { Content } from "./components/Content";
+
 import { MoviesContextProvider } from "./context/MoviesContext";
 
 import "./styles/global.scss";
+
+const Content = lazy(() => import("./components/Content"));
 
 export function App() {
   return (
@@ -10,7 +13,9 @@ export function App() {
       <div style={{ display: "flex", flexDirection: "row" }}>
         <SideBar />
 
-        <Content />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Content />
+        </Suspense>
       </div>
     </MoviesContextProvider>
   );
